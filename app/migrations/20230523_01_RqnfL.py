@@ -8,17 +8,17 @@ __depends__ = {}
 
 steps = [
     step(""" CREATE TABLE db.user (
-            login VARCHAR(50),
+            username VARCHAR(50),
             nome VARCHAR(100),
             email VARCHAR(50),
-            senha VARCHAR(50),
+            password VARCHAR(50),
             status BOOL,
             PRIMARY KEY (email)
         );
         """),
     step(
         """
-        INSERT INTO db.user (login, nome, email, senha, status)
+        INSERT INTO db.user (username, nome, email, password, status)
         VALUES
         ('user1', 'John Smith', 'johnsmith@example.com', 'password123', true),
         ('user2', 'Jane Doe', 'janedoe@example.com', 'abc123', true),
