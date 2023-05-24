@@ -1,0 +1,6 @@
+fastapi==0.95.2
+uvicorn==0.22.0
+pymysql==1.0.3
+sqlalchemy==2.0.15
+mysql-connector-python==8.0.33
+yoyo-migrations==8.2.0
