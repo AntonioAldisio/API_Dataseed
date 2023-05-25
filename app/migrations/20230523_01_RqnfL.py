@@ -7,6 +7,7 @@ from yoyo import step
 __depends__ = {}
 
 steps = [
+    step(""" CREATE DATABASE db """),
     step(""" CREATE TABLE db.user (
             username VARCHAR(50),
             nome VARCHAR(100),

@@ -1,0 +1,28 @@
+version: '3'
+
+networks:
+  mynetwork:
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
+
+services:
+  db:
+    image: mysql
+    ports:
+      - "3306:3306"
+    env_file:
+      - .env
+    networks:
+      mynetwork:
+        ipv4_address: 172.25.0.2
+  app:
+    build: .
+    ports:
+      - "80:80"
+    env_file:
+      - .env
+    networks:
+      - mynetwork
+    depends_on:
+      - db
