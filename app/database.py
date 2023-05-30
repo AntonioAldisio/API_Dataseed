@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 import os
 
-DATABASE_URL = os.getenv('DB_CONNECTION', default="mysql+pymysql://root:root@172.25.0.2:3306/db")
+DATABASE_URL = os.getenv('DB_CONNECTION', default=None)
 
 engine = create_engine(
     DATABASE_URL,
@@ -11,7 +11,9 @@ engine = create_engine(
     max_overflow=0
 )
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+SessionLocal = sessionmaker(autocommit=False,
+                            autoflush=False,
+                            bind=engine)
 Base = declarative_base()
 
 
