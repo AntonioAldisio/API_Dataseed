@@ -148,3 +148,11 @@ obs: Talvez seja necessario inserir esse env no terminal para rodar os testes.
 ```Bash
 export PYTHONPATH=$PWD/app
 ```
+
+## Pontos de melhoria
+
+1. Criar melhores testes - inclusão de teste relacionado ao banco de dados
+2. Deslogar usuários após deletar usuário
+3. Inserir senhas cripitografadas no banco de dados.
+4. Trocar envio de parametros por body
+5. Disponibilizar um import do insomnia com endpoints
