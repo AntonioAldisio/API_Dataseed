@@ -31,7 +31,7 @@ O desenvolvimento dessa parte ocorreu sem problemas graves durante o processo de
 
 4. Verificação de conexão entre os containers:
 
-Inicialmente, enfrentamos problemas na conexão entre os contêineres, devido à inserção incorreta dos valores de IP dos contêineres e à ausência do banco de dados pré-existente para estabelecer a conexão. Além disso, foi identificado que era necessário criar um atraso para permitir a migração do contêiner da aplicação para o contêiner do banco de dados.
+Inicialmente, enfrentei problemas na conexão entre os contêineres, devido à inserção incorreta dos valores de IP e à ausência do banco de dados pré-existente para estabelecer a conexão. Além disso, foi identificado que era necessário criar um atraso para permitir a migração do contêiner da aplicação para o contêiner do banco de dados.
 
 Para resolver essas questões, foram realizadas as seguintes ações:
 
@@ -49,13 +49,13 @@ O desenvolvimento de testes desempenha um papel crucial na validação do funcio
 
 No entanto, este tópico em particular apresentou desafios durante o desenvolvimento dos testes. Inicialmente, a ideia era realizar testes que envolvessem uma conexão real com o banco de dados, permitindo a verificação direta dos resultados e comportamentos da API.
 
-Entretanto, devido limitações de tempo e conhecimento sobre a biblioteca, não foi possível prosseguir com essa abordagem. Em vez disso, uma solução alternativa foi adotada, utilizando um mock do request para simular as interações com o banco de dados. Embora essa solução alternativa não seja ideal para a construção de testes completos e realistas, permitiu continuar o desenvolvimento dos testes e avaliar os resultados em um ambiente controlado.
+Entretanto, devido limitações de tempo e conhecimento sobre a biblioteca, não foi possível prosseguir com essa abordagem. Em vez disso, a solução alternativa adotada foi utilizar um mock ... do request para simular as interações com o banco de dados. Embora essa solução alternativa não seja ideal para a construção de testes completos e realistas, permitiu continuar o desenvolvimento dos testes e avaliar os resultados em um ambiente controlado.
 
 É importante reconhecer que, embora os testes com mocks possam fornecer uma cobertura básica, eles não são capazes de identificar todas as possíveis falhas e comportamentos inesperados que podem ocorrer com uma conexão real ao banco de dados. Portanto, essa abordagem deve ser considerada temporária, e a busca por uma solução mais robusta e abrangente deve ser realizada no futuro.
 
 6. Revalidação dos endpoints:
 
-Após a implementação dos testes e o desenvolvimento da API, foi revalidar os endpoints para garantir que todas as alterações e correções tenham sido implementadas corretamente.
+Após a implementação dos testes e o desenvolvimento da API, foi revalidado os endpoints para garantir que todas as alterações e correções tenham sido implementadas corretamente.
 
 ## Como rodar o projeto
 
@@ -71,7 +71,7 @@ Se ja tiver a imagem da API na maquina:
 $ make docker-up
 ```
 
-Parar os continer
+Parar os conteiners
 ```Bash
 $ make docker-down
 ```
@@ -136,7 +136,7 @@ yoyo apply
 $ uvicorn main:app --reload --host 0.0.0.0 --port 80
 ```
 
-Para rodar os teste é necessario instalar requirements-dev.txt
+Para rodar os testes é necessario instalar requirements-dev.txt
 ```Bash
 $ pip install -r requirements-dev.txt
 ```
