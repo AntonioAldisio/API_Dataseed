@@ -15,21 +15,29 @@ from model.models import User
 from typing import Optional
 
 
-
 router = APIRouter(
-    tags = ['API'],
-    responses = {404: {"description": "Not found"}},
+    tags=['API'],
+    responses={404: {"description": "Not found"}},
 )
+
+
+@router.get("/", include_in_schema=False)
+async def index():
+    return {"status": "ok"}
 
 
 @router.post("/register", response_model=messageResponse)
 async def cadastrar_usuario(username: str,
-                      nome: str,
-                      email: str,
-                      password: str,
-                      status: bool,
-                      db: Session = Depends(get_db)):
-    user = User(username=username, nome=nome, email=email, password=password, status=status)
+                            nome: str,
+                            email: str,
+                            password: str,
+                            status: bool,
+                            db: Session = Depends(get_db)):
+    user = User(username=username,
+                nome=nome,
+                email=email,
+                password=password,
+                status=status)
     db.add(user)
     db.commit()
     db.refresh(user)
@@ -38,15 +46,17 @@ async def cadastrar_usuario(username: str,
 
 @router.put("/changePassword", response_model=messageResponse)
 async def trocar_senha(email: str,
-                 senha_atual: str,
-                 nova_senha: str,
-                 db: Session = Depends(get_db)):
+                       senha_atual: str,
+                       nova_senha: str,
+                       db: Session = Depends(get_db)):
     user = db.query(User).filter(User.email == email).first()
     if not user:
-        raise HTTPException(status_code=404, detail="Usuário não encontrado")
+        raise HTTPException(status_code=404,
+                            detail="Usuário não encontrado")
 
     if user.password != senha_atual:
-        raise HTTPException(status_code=400, detail="Senha atual incorreta")
+        raise HTTPException(status_code=400,
+                            detail="Senha atual incorreta")
 
     user.password = nova_senha
     db.commit()
@@ -55,12 +65,15 @@ async def trocar_senha(email: str,
 
 
 @router.post("/login", response_model=TokenResponse)
-async def login(username: str, password: str, db: Session = Depends(get_db)):
+async def login(username: str,
+                password: str,
+                db: Session = Depends(get_db)):
     email = username
     senha = password
 
     if not authenticate_user(email, senha, db=db):
-        raise HTTPException(status_code=401, detail="Credenciais inválidas")
+        raise HTTPException(status_code=401,
+                            detail="Credenciais inválidas")
 
     # Generate JWT token
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -72,7 +85,7 @@ async def login(username: str, password: str, db: Session = Depends(get_db)):
 
 
 @router.post("/loginAuth", include_in_schema=False)
-async def login(
+async def login_auth(
     form_data: OAuth2PasswordRequestForm = Depends(),
     db: Session = Depends(get_db)
 ):
@@ -80,7 +93,8 @@ async def login(
     senha = form_data.password
 
     if not authenticate_user(email, senha, db=db):
-        raise HTTPException(status_code=401, detail="Credenciais inválidas")
+        raise HTTPException(status_code=401,
+                            detail="Credenciais inválidas")
 
     # Gera o token JWT
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -125,8 +139,10 @@ async def update_current_user_info(
 
     return {"message": "Usuário atualizado com sucesso"}
 
+
 @router.delete("/deleteUser", response_model=messageResponse)
-def delete_current_user(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+def delete_current_user(current_user: User = Depends(get_current_user),
+                        db: Session = Depends(get_db)):
     db.delete(current_user)
     db.commit()
     return {"message": "Usuário deletado com sucesso"}

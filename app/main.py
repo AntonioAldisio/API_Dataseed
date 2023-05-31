@@ -10,8 +10,3 @@ app = FastAPI(title="Microserviço de Gerenciamento de Usuários",
               version="1.0.0")
 
 app.include_router(api_router)
-
-
-@app.get("/", include_in_schema=False)
-async def index():
-    return {"status": "ok"}

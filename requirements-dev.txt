@@ -10,4 +10,5 @@ pytest==7.3.1
 pytest-cov==4.0.0
 converge==1.1.1
 httpx==0.24.1
+parameterized==0.9.0
 yoyo-migrations==8.2.0
