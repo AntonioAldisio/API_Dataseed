@@ -19,11 +19,11 @@ O desenvolvimento foi executado :
 
 1. API públicas e API privada com banco Mysql em máquina local:
 
-O desenvolvimento dessa parte ocorreu sem problemas graves durante o processo de desenvolvimento.
+O processo de desenvolvimento dessa etapa ocorreu sem problemas graves.
 
 2. Testes manuais dos endpoints:
 
-O desenvolvimento dessa parte ocorreu sem problemas
+O processo de desenvolvimento dessa etapa ocorreu sem problemas graves.
 
 3. Criação do Dockerfile e docker-compose:
 
