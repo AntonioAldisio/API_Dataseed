@@ -12,6 +12,7 @@ aplicar migrate
 yoyo apply
 ```
 
+export PYTHONPATH=$PWD/app
 
 ```
 uvicorn main:app --reload
