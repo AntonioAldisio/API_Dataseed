@@ -1,4 +1,4 @@
-# FASTAPI - DataSeed
+# FASTAPI
 
 ## Objetivo
 
